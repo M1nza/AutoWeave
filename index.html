@@ -1,0 +1,189 @@
+{#<!DOCTYPE html>#}
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+    <link rel="shortcut icon" href="https://cdn2.iconfinder.com/data/icons/color-svg-vector-icons-2/512/transport_transportation_vector-512.png" type="image/x-icon">
+  <title>AutoWeave</title>
+
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Design by foolishdeveloper.com -->
+    <title>AutoWeave</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <!--Stylesheet-->
+    <style media="screen">
+      *,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #080710;
+}
+.background{
+    width: 430px;
+    height: 520px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+}
+.background .shape{
+    height: 300px;
+    width: 500px;
+    position: absolute;
+    border-radius: 0;
+}
+.shape:first-child {
+    background-image: url('https://th.bing.com/th/id/R.2222d7af7bec91a21b7ff8258d4a06e7?rik=N%2b3oV%2fsW%2fZTYhQ&riu=http%3a%2f%2fwww.carbodydesign.com%2fmedia%2f2012%2f08%2fHydra-Schmidt-Coupe-by-Daniel-Simon-01.jpg&ehk=%2fsxBvk%2bvsaqQ0UIG7UUzZEsH2mxcj%2fGM1YsCewLiki8%3d&risl=&pid=ImgRaw&r=0');
+    background-size: cover;
+    left: -350px;
+    top: -90px;
+    animation: float 3s ease-in-out infinite; /* Animation added */
+}
+
+.shape:last-child {
+    background-image: url('https://i.pinimg.com/originals/8b/5f/ff/8b5fffc3471e449cecd6cd6f4bd78329.jpg');
+    background-size: cover;
+    right: -350px;
+    bottom: -90px;
+    animation: float 3s ease-in-out infinite; /* Animation added */
+}
+
+/* Animation keyframes */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(5); /* Starting and ending position */
+    }
+    50% {
+        transform: translateY(-10px); /* Move up slightly */
+    }
+}
+
+/* Additional styles for better presentation */
+.shape {
+    position: absolute;
+    width: 500px; /* Adjust as necessary */
+    height: 0px; /* Adjust as necessary */
+    z-index: -1; /* Ensure shapes are behind content */
+    border-radius: 15px; /* Optional: rounded corners */
+}
+
+form{
+    height: 520px;
+    width: 400px;
+    background-color: black;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 6px 12px rgba(255, 0, 0, 0.5);    padding: 50px 35px;
+}
+form *{
+    font-family: 'Poppins',sans-serif;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+form h3{
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+}
+
+label{
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+
+}
+input{
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+    box-shadow: 0 6px 12px rgba(255, 0, 0, 0.5);
+}
+::placeholder{
+    color: #e5e5e5;
+}
+button{
+    margin-top: 50px;
+    width: 100%;
+    background-color: #ffffff;
+    color: #080710;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(255, 0, 0, 0.5);
+}
+.social{
+  margin-top: 30px;
+  display: flex;
+}
+.social div{
+  background: red;
+  width: 150px;
+  border-radius: 3px;
+  padding: 5px 10px 10px 5px;
+  background-color: rgba(255,255,255,0.27);
+  color: #eaf0fb;
+  text-align: center;
+}
+.social div:hover{
+  background-color: rgba(255,255,255,0.47);
+}
+.social .fb{
+  margin-left: 25px;
+}
+.social i{
+  margin-right: 4px;
+}
+
+    </style>
+</head>
+<body>
+{#    <div class="background">#}
+{#        <div class="shape"></div>#}
+{#        <div class="shape"></div>#}
+{#    </div>#}
+    <form action="/login_post" method="post">
+        <h3>Login Here!</h3>
+
+        <label for="username">Username</label>
+        <input type="text" name="textfield" placeholder="Username" id="username" required>
+
+        <label for="password">Password</label>
+        <input type="password" name="textfield2"  placeholder="Password" id="password" required>
+
+        <button>Log In</button>
+    </form>
+</body>
+</html>
+<!-- partial -->
+
+</body>
+</html>

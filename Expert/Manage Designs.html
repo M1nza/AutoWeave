@@ -1,0 +1,146 @@
+{% extends 'Expert/Expert home.html' %}
+{% block body %}
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <title>Manage Designs</title>
+  <style>
+    body {
+    font-family: 'Poppins', sans-serif;
+    background-color: black; /* Black background */
+    margin: 0;
+    padding: 0;
+    color: #f0f0f0; /* Light text color */
+  }
+
+  /* Styling the main form */
+  form {
+    max-width: 1500px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: rgba(30, 30, 30, 0.8); /* Semi-transparent black */
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(255, 0, 0, 0.5); /* Red glow effect */
+  }
+
+  /* Form heading */
+   form h2 {
+    font-size: 24px;
+    color: #ff0000; /* Bright red for headings */
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  /* Table Styling */
+  table {
+    width: 85vw;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  /* Table cell and header styles */
+  table th, table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #444; /* Dark border for rows */
+    font-size: calc(1vw + 0.5em); /* Dynamic font size */
+    color: #f0f0f0; /* Light text color */
+  }
+
+  table th {
+    background-color: rgba(50, 50, 50, 0.9); /* Slightly lighter black */
+    font-weight: bold;
+  }
+
+{#  table tr:nth-child(even) {#}
+{#    background-color: rgba(50, 50, 50, 0.6); /* Alternating row colors */#}
+{#  }#}
+
+  table td img {
+    border-radius: 10px;
+    object-fit: cover;
+  }
+   .center {
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .center a {
+    padding: 10px 25px;
+    background-color: #ff0000; /* Red button */
+    color: white;
+    border-radius: 30px;
+    font-size: calc(1vw + 0.5em); /* Dynamic font size */
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+
+  .center a:hover {
+    background-color: #cc0000; /* Darker red on hover */
+  }
+   td p a {
+  color: red; /* Red text for Edit and Delete links */
+  text-decoration: none; /* Removes underline from links */
+  font-weight: bold; /* Makes the text bold for emphasis */
+  transition: color 0.3s; /* Smooth transition for hover effect */
+       text-align: center;
+   }
+
+td p a:hover {
+  color: #cc0000; /* Darker red when hovering */
+}
+
+      @media (max-width: 768px) {
+    table, input[type="text"], input[type="submit"] {
+      width: 100%;
+      margin: 10px 0;
+    }
+
+        td p {
+  margin: 5px 0;
+  text-align: center;  }
+
+
+    form {
+      padding: 15px;
+    }
+
+    input[type="text"], input[type="submit"] {
+      font-size: 14px;
+    }
+  }
+  </style>
+</head>
+
+<body>
+
+  <form id="form1" name="form1" method="post" action="">
+      <h2><b>Manage Designs</b></h2>
+    <table>
+      <tr>
+        <th>Image</th>
+        <th>Description</th>
+        <th>Date</th>
+        <th>Actions</th>
+      </tr>
+      {% for i in a %}
+      <tr>
+        <td><img src="{{ i.design.url }}" height="100" width="100" alt="Design Image"></td>
+        <td>{{ i.details }}</td>
+        <td>{{ i.date }}</td>
+        <td>
+          <p><a href="designedit/{{ i.id }}#a">Edit</a></p>
+          <p><a href="designdlt/{{ i.id }}#a">Delete</a></p>
+        </td>
+      </tr>
+      {% endfor %}
+      <tr>
+        <td colspan="7" class="center">
+          <a href="/expert_managedesignsform#a" class="add-new">Add New</a>
+        </td>
+      </tr>
+    </table>
+  </form>
+</body>
+
+{% endblock %}
+

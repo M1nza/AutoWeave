@@ -1,0 +1,131 @@
+{% extends 'Expert/Expert home.html' %}
+{% block body %}
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <title>Styled Table</title>
+  <style>
+    /* General Body Styling */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: black; /* Black background */
+      color: #f0f0f0; /* Light text */
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Form Styling */
+    form {
+      max-width: 85vw;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: rgba(30, 30, 30, 0.8); /* Semi-transparent black */
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(255, 0, 0, 0.5); /* Red glow effect */
+    }
+form h2 {
+    font-size: 24px;
+    color: #ff0000; /* Bright red for headings */
+    margin-bottom: 20px;
+    text-align: center;
+  }
+    /* Table Styling */
+    table {
+      width: 80vw;
+      border-collapse: collapse;
+    }
+
+    table th,
+    table td {
+      padding: 12px;
+      text-align: center;
+      border: 1px solid #444; /* Dark border */
+      font-size: 16px;
+    }
+
+    table th {
+      background-color: rgba(50, 50, 50, 0.9); /* Slightly lighter black */
+      color: #ff0000; /* Bright red for headings */
+      font-weight: bold;
+    }
+
+    table td {
+      color: #f0f0f0; /* Light text */
+    }
+
+    /* Links Styling */
+    table td a {
+      color: #ff0000; /* Red text for links */
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    table td a:hover {
+      color: #cc0000; /* Darker red on hover */
+    }
+
+    /* Add New Link Styling */
+    .center a {
+      padding: 10px 20px;
+      background-color: #ff0000; /* Red button */
+      color: white;
+      border-radius: 30px;
+      font-size: 16px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .center a:hover {
+      background-color: #cc0000; /* Darker red on hover */
+    }
+
+    /* Responsive Styling */
+    @media (max-width: 768px) {
+      table th,
+      table td {
+        font-size: 14px;
+        padding: 8px;
+      }
+
+      .center a {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <form id="form1" name="form1" method="post" action="">
+    <table>
+    <h2><b>Materials</b></h2>
+      <tr>
+        <th>Design</th>
+        <th>Materials</th>
+        <th>Date</th>
+        <th>Amount</th>
+        <th>Actions</th>
+      </tr>
+      {% for i in mat %}
+      <tr>
+        <td>{{ i.DESIGN.details }}</td>
+        <td>{{ i.MATERIALS.materialname }}</td>
+        <td>{{ i.date }}</td>
+        <td>{{ i.amount }}</td>
+        <td>
+          <a href="/expert_materialsinfo_edit/{{ i.id }}#a">Edit</a> |
+          <a href="/expert_materialsinfo_delete/{{ i.id }}#a">Delete</a> |
+          <a href="/expert_budgetadd/{{ i.id }}#a">Add Bud</a>
+        </td>
+      </tr>
+      {% endfor %}
+      <tr>
+        <td colspan="5" class="center">
+          <a href="/expert_materialsinfoform#a">Add New</a>
+        </td>
+      </tr>
+    </table>
+  </form>
+</body>
+
+{% endblock %}

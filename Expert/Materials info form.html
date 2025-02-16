@@ -1,0 +1,164 @@
+{#{% extends 'Expert/Expert home.html' %}#}
+{#{% block body %}#}
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>Styled Form</title>
+    <style>
+        /* General Body Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: black; /* Black background */
+            color: #f0f0f0; /* Light text */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Form Styling */
+        form {
+            max-width: 85vw;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(30, 30, 30, 0.8); /* Semi-transparent black */
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(255, 0, 0, 0.5); /* Red glow */
+        }
+        form h2 {
+            font-size: 24px;
+            color: #ff0000; /* Bright red for headings */
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        form table {
+            width: 80vw;
+            border-collapse: collapse;
+        }
+
+        form table th,
+        form table td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #444; /* Dark border */
+            font-size: 16px;
+        }
+
+        form table td {
+            color: #f0f0f0; /* Light text */
+        }
+
+        /* Input Styling */
+        input[type="text"],
+        input[type="file"] {
+            width: 85%; /* Full width */
+            height: 40px; /* Uniform height */
+            padding: 10px;
+            border: 2px solid red; /* Red border */
+            background-color: black; /* Black input box */
+            color: white; /* White text */
+            border-radius: 6px; /* Rounded corners */
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        /* Submit Button Styling */
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #ff0000; /* Bright red */
+            color: black; /* Black text */
+            border: none;
+            border-radius: 30px; /* Rounded corners */
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #cc0000; /* Darker red */
+        }
+
+        /* Select Element Styling */
+        select {
+            width: 85%; /* Full width */
+            height: 40px; /* Uniform height */
+            padding: 10px;
+            border: 2px solid red; /* Red border */
+            background-color: black; /* Black background */
+            color: white; /* White text */
+            border-radius: 6px; /* Rounded corners */
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        select option {
+            background-color: black; /* Black background for options */
+            color: white; /* White text for options */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            form table th,
+            form table td {
+                font-size: 14px;
+                padding: 10px;
+            }
+
+            input[type="text"],
+            input[type="file"] {
+                font-size: 14px;
+            }
+
+            input[type="submit"] {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+
+            select {
+                font-size: 14px;
+                height: 35px; /* Adjust height on smaller screens */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <form id="form1" name="form1" method="post" action="/expert_materialsinfoform_post" enctype="multipart/form-data">
+        <table>
+            <h2><b>Add Materials Information</b></h2>
+
+            <tr>
+                <td><b>Materials</b></td>
+                <td>
+                    <span class="select">
+                        <select name="textfield26">
+                            {% for i in m %}
+                                <option value="{{ i.id }}">{{ i.materialname }}</option>
+                            {% endfor %}
+                        </select>
+                    </span>
+                </td>
+            </tr>
+
+            <tr>
+                <td><b>Design</b></td>
+                <td>
+                    <select name="design">
+                        {% for i in b %}
+                            <option value="{{ i.id }}">{{ i.details }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <div align="center">
+                        <input type="submit" name="Submit" value="Submit" />
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+{#{% endblock %}#}

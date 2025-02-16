@@ -1,0 +1,150 @@
+{% extends 'Shop/index.html' %}
+{% block body %}
+<head>
+  <style>
+    body {
+      background-color: black; /* Black background */
+      color: #f0f0f0; /* Light text for contrast */
+      font-family: 'Poppins', sans-serif; /* Consistent font */
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Main Container Box */
+    .container-box {
+      width: 1000px; /* Adjust the width */
+      margin: 30px auto; /* Center it horizontally */
+      padding: 20px;
+      background-color: rgba(40, 40, 40, 0.5); /* Semi-transparent black background */
+      box-shadow: 0 6px 12px rgba(255, 0, 0, 0.5); /* Red glow effect */
+      border-radius: 12px; /* Rounded corners for the box */
+      overflow: hidden; /* Clip child elements to rounded corners */
+    }
+
+    /* Search Section */
+    .search-section {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .search-label {
+      color: #ff0000; /* Red color */
+      font-size: calc(1vw + 0.5em); /* Dynamic font size */
+      margin-bottom: 10px; /* Space below the label */
+    }
+
+    .input-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      align-items: center;
+    }
+
+    input[type="text"] {
+      padding: 10px 20px;
+      font-size: calc(1vw + 0.5em); /* Dynamic font size */
+      width: 60%; /* Adjust width */
+      border: 2px solid #ff0000; /* Red border */
+      border-radius: 30px;
+      outline: none;
+      background-color: #222; /* Dark input background */
+      color: #fff;
+      transition: border-color 0.3s;
+    }
+
+    input[type="text"]:focus {
+      border-color: #cc0000; /* Darker red when focused */
+    }
+
+    input[type="submit"] {
+      padding: 10px 25px;
+      background-color: #ff0000; /* Bright red */
+      color: white;
+      font-size: calc(1vw + 0.5em); /* Dynamic font size */
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #cc0000; /* Darker red on hover */
+    }
+
+    /* Table Styling */
+    table {
+      width: 100%; /* Full width table */
+      margin: 20px 0; /* Add some space between the search and table */
+      border-collapse: separate; /* Allow border-radius to apply */
+      border-spacing: 0; /* Remove extra spacing */
+    }
+
+    table th, table td {
+      padding: 15px;
+      text-align: center;
+      font-size: calc(1vw + 0.5em); /* Dynamic font size */
+      color: #f0f0f0; /* Light text */
+    }
+
+    table th {
+      background-color: rgba(70, 70, 70, 0.9); /* Lighter black for table header */
+      font-weight: bold;
+    }
+
+    /* Apply rounded corners to the first and last `th` */
+    table th:first-child {
+      border-top-left-radius: 12px; /* Top-left corner */
+    }
+
+    table th:last-child {
+      border-top-right-radius: 12px; /* Top-right corner */
+    }
+
+    table tr:nth-child(odd) {
+      background-color: rgba(40, 40, 40, 0.9); /* Alternating row colors */
+    }
+
+    /* Responsive Styling */
+    @media (max-width: 768px) {
+      table, input[type="text"], input[type="submit"] {
+        width: 100%;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Main Container Box -->
+  <div class="container-box">
+  <form id="form1" name="form1" method="post" action="/shop_viewusers_search#a">
+    <!-- Search Section -->
+    <div class="search-section">
+      <label class="search-label"><b>Search for Users</b></label>
+      <div class="input-container">
+        <input type="text" name="textfield" placeholder="Search users..." value="{{ u }}"/>
+        <input type="submit" name="Submit" value="Submit" />
+      </div>
+    </div>
+
+    <!-- Table Section -->
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Gmail</th>
+        </tr>
+        {% for i in data %}
+        <tr>
+          <td>{{ i.name }}</td>
+          <td>{{ i.phone }}</td>
+          <td>{{ i.email }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </form>
+  </div>
+</body>
+
+{% endblock %}
+

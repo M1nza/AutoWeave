@@ -1,0 +1,27 @@
+{% extends 'Expert/Expert home.html' %}
+{% block body %}
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="/expert_budgetadd_post">
+  <table width="200" border="1">
+    <tr>
+      <td>User</td>
+      <td>Description</td>
+      <td>Budget</td>
+    </tr>
+      {% for i in a %}
+    <tr>
+      <td>{{ i.DESIGN.LOGIN.username }}</td>
+      <td>{{ i.MATERIALS.materialname }}</td>
+      <td><a href="/expert_budgetadd#a">ADD BUDGET</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+
+{% endblock %}

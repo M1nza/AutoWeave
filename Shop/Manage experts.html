@@ -1,0 +1,197 @@
+{% extends 'Shop/index.html' %}
+{% block body %}
+<style>
+  /* General body styling */
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: black; /* Black background */
+    margin: 0;
+    padding: 0;
+    color: #f0f0f0; /* Light text color */
+  }
+
+  /* Styling the main form */
+  form {
+    max-width: 1500px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: rgba(30, 30, 30, 0.8); /* Semi-transparent black */
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(255, 0, 0, 0.5); /* Red glow effect */
+  }
+
+  /* Form heading */
+  form h2 {
+    font-size: 24px;
+    color: #ff0000; /* Bright red for headings */
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  /* Table Styling */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  /* Table cell and header styles */
+  table th, table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #444; /* Dark border for rows */
+    font-size: calc(1vw + 0.5em); /* Dynamic font size */
+    color: #f0f0f0; /* Light text color */
+  }
+
+  table th {
+    background-color: rgba(50, 50, 50, 0.9); /* Slightly lighter black */
+    font-weight: bold;
+  }
+
+  table tr:nth-child(even) {
+    background-color: rgba(50, 50, 50, 0.6); /* Alternating row colors */
+  }
+
+  table td img {
+    border-radius: 10px;
+    object-fit: cover;
+  }
+
+  /* Search bar styling */
+  input[type="text"] {
+    padding: 10px 20px;
+    font-size: calc(1vw + 0.5em); /* Dynamic font size */
+    width: 70%;
+    border: 2px solid #ff0000; /* Red border */
+    border-radius: 30px;
+    outline: none;
+    background-color: #222; /* Dark input background */
+    color: #fff; /* White text color */
+    transition: border-color 0.3s;
+  }
+
+  input[type="text"]:focus {
+    border-color: #cc0000; /* Darker red when focused */
+  }
+
+  /* Submit button styling */
+  input[type="submit"] {
+    padding: 10px 25px;
+    background-color: #ff0000; /* Bright red */
+    color: white;
+    font-size: calc(1vw + 0.5em); /* Dynamic font size */
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #cc0000; /* Darker red on hover */
+  }
+
+  /* Links styling */
+  a {
+    color: #ff0000; /* Red links */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+
+  a:hover {
+    color: #f0f0f0; /* Light text on hover */
+    text-decoration: underline;
+  }
+
+  /* Centering the 'Add New' link */
+  .center {
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .center a {
+    padding: 10px 25px;
+    background-color: #ff0000; /* Red button */
+    color: white;
+    border-radius: 30px;
+    font-size: calc(1vw + 0.5em); /* Dynamic font size */
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+
+  .center a:hover {
+    background-color: #cc0000; /* Darker red on hover */
+  }
+
+  /* Styling the actions column */
+  td p {
+    margin: 5px 0;
+    text-align: center;
+  }
+
+  /* Responsive styling for small screens */
+  @media (max-width: 768px) {
+    table, input[type="text"], input[type="submit"] {
+      width: 100%;
+      margin: 10px 0;
+    }
+
+    td img {
+      width: 60px;
+      height: 60px;
+    }
+
+    form {
+      padding: 15px;
+    }
+
+    input[type="text"], input[type="submit"] {
+      font-size: 14px;
+    }
+  }
+</style>
+<body>
+  <form id="form1" name="form1" method="post" action="/shop_manageexperts_search#a">
+    <h2>Search for Experts</h2>
+    <table width="100">
+      <tr>
+        <td colspan="5">
+          <input type="text" name="textfield" placeholder="Search experts..."  value="{{ s }}"/>
+        </td>
+        <td colspan="2">
+          <input type="submit" name="Submit" value="Submit" />
+        </td>
+      </tr>
+      <tr>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Image</th>
+        <th>Qualification</th>
+        <th>Experience</th>
+        <th>Actions</th>
+      </tr>
+        {% for i in data %}
+      <tr>
+        <td>{{ i.name }}</td>
+        <td>{{ i.phone }}</td>
+        <td>{{ i.email }}</td>
+        <td><img src="{{ i.image.url }}" height="100" width="100" alt="expert image"></td>
+
+        <td>{{ i.qualification }}</td>
+        <td>{{ i.experience }}</td>
+        <td>
+          <p><a href="expertedit/{{ i.id }}#a">Edit</a></p>
+          <p><a href="expertdlt/{{ i.LOGIN.id }}#a">Delete</a></p>
+        </td>
+      </tr>
+        {% endfor %}
+      <tr>
+        <td colspan="7" class="center"><a href="shop_expertadd#a">Add New Expert</a></td>
+      </tr>
+    </table>
+  </form>
+</body>
+
+{% endblock %}
